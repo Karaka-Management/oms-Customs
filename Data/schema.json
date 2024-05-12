@@ -1,0 +1,1326 @@
+{
+    "taric_good": {
+        "name": "taric_good",
+        "description": "src: https://circabc.europa.eu/ui/group/0e5f18c2-4b2f-42e9-aed4-dfe50ae1263b",
+        "fields": {
+            "taric_good_id": {
+                "name": "taric_good_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Goods_code": {
+                "name": "Goods_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Start_date": {
+                "name": "Start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "End_date": {
+                "name": "End_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "Language": {
+                "name": "Language",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Hier_Pos": {
+                "name": "Hier_Pos",
+                "type": "INT",
+                "null": false
+            },
+            "Indent": {
+                "name": "Indent",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Description": {
+                "name": "Description",
+                "type": "TEXT",
+                "null": false
+            },
+            "Descr_start_date": {
+                "name": "Descr_start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            }
+        }
+    },
+    "taric_footnote_description": {
+        "name": "taric_footnote_description",
+        "fields": {
+            "taric_footnote_description_id": {
+                "name": "taric_footnote_description_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Footnote": {
+                "name": "Footnote",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Language": {
+                "name": "Language",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Description": {
+                "name": "Description",
+                "type": "TEXT",
+                "null": false
+            },
+            "Start_date": {
+                "name": "Start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "Descr_start_date": {
+                "name": "Descr_start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "End_date": {
+                "name": "End_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            }
+        }
+    },
+    "taric_add_code": {
+        "name": "taric_add_code",
+        "fields": {
+            "taric_add_code_id": {
+                "name": "taric_add_code_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Add_code": {
+                "name": "Add_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Language": {
+                "name": "Language",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Description": {
+                "name": "Description",
+                "type": "TEXT",
+                "null": false
+            },
+            "Start_date": {
+                "name": "Start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "Descr_start_date": {
+                "name": "Descr_start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "End_date": {
+                "name": "End_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            }
+        }
+    },
+    "taric_measure_footnote": {
+        "name": "taric_measure_footnote",
+        "fields": {
+            "taric_measure_footnote_id": {
+                "name": "taric_measure_footnote_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Goods_code": {
+                "name": "Goods_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Add_code": {
+                "name": "Add_code",
+                "type": "VARCHAR(16)",
+                "null": true,
+                "default": null,
+                "foreignTable": "taric_add_code",
+                "foreignKey": "Add_code"
+            },
+            "Order_No": {
+                "name": "Order_No",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Origin_code": {
+                "name": "Origin_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Start_date": {
+                "name": "Start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "End_date": {
+                "name": "End_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "Meas_type_code": {
+                "name": "Meas_type_code",
+                "type": "INT",
+                "null": false
+            },
+            "Origin": {
+                "name": "Origin",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Measure_type": {
+                "name": "Measure_type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Footnote": {
+                "name": "Footnote",
+                "type": "VARCHAR(255)",
+                "null": true,
+                "default": null,
+                "foreignTable": "taric_footnote_description",
+                "foreignKey": "Footnote"
+            }
+        }
+    },
+    "taric_duties_import": {
+        "name": "taric_duties_import",
+        "fields": {
+            "taric_duties_import_id": {
+                "name": "taric_duties_import_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Goods_code": {
+                "name": "Goods_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Add_code": {
+                "name": "Add_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Order_No": {
+                "name": "Order_No",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Start_date": {
+                "name": "Start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "End_date": {
+                "name": "End_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "RED_IND": {
+                "name": "RED_IND",
+                "type": "INT",
+                "null": false
+            },
+            "Origin": {
+                "name": "Origin",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Measure_type": {
+                "name": "Measure_type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Legal_base": {
+                "name": "Legal_base",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Duty": {
+                "name": "Duty",
+                "type": "TEXT",
+                "null": false
+            },
+            "Origin_code": {
+                "name": "Origin_code",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Meas_type_code": {
+                "name": "Meas_type_code",
+                "type": "INT",
+                "null": false
+            }
+        }
+    },
+    "taric_duties_export": {
+        "name": "taric_duties_export",
+        "fields": {
+            "taric_duties_export_id": {
+                "name": "taric_duties_export_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Goods_code": {
+                "name": "Goods_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Add_code": {
+                "name": "Add_code",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Order_No": {
+                "name": "Order_No",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Start_date": {
+                "name": "Start_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "End_date": {
+                "name": "End_date",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "RED_IND": {
+                "name": "RED_IND",
+                "type": "INT",
+                "null": false
+            },
+            "Destination": {
+                "name": "Destination",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Measure_type": {
+                "name": "Measure_type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Legal_base": {
+                "name": "Legal_base",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Duty": {
+                "name": "Duty",
+                "type": "TEXT",
+                "null": false
+            },
+            "Dest_code": {
+                "name": "Dest_code",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Meas_type_code": {
+                "name": "Meas_type_code",
+                "type": "INT",
+                "null": false
+            }
+        }
+    },
+    "sanction_eu_cons": {
+        "name": "sanction_eu_cons",
+        "fields": {
+            "sanction_eu_cons_id": {
+                "name": "sanction_eu_cons_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "fileGenerationDate": {
+                "name": "fileGenerationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Entity_LogicalId": {
+                "name": "Entity_LogicalId",
+                "type": "INT",
+                "null": false
+            },
+            "Entity_EU_ReferenceNumber": {
+                "name": "Entity_EU_ReferenceNumber",
+                "type": "VARCHAR(50)",
+                "null": false
+            },
+            "Entity_UnitedNationId": {
+                "name": "Entity_UnitedNationId",
+                "type": "VARCHAR(50)",
+                "null": false
+            },
+            "Entity_DesignationDate": {
+                "name": "Entity_DesignationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Entity_DesignationDetails": {
+                "name": "Entity_DesignationDetails",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Entity_Remark": {
+                "name": "Entity_Remark",
+                "type": "TEXT",
+                "null": false
+            },
+            "Entity_SubjectType": {
+                "name": "Entity_SubjectType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Entity_SubjectType_ClassificationCode": {
+                "name": "Entity_SubjectType_ClassificationCode",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Entity_Regulation_Type": {
+                "name": "Entity_Regulation_Type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Entity_Regulation_OrganisationType": {
+                "name": "Entity_Regulation_OrganisationType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Entity_Regulation_PublicationDate": {
+                "name": "Entity_Regulation_PublicationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Entity_Regulation_EntryIntoForceDate": {
+                "name": "Entity_Regulation_EntryIntoForceDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Entity_Regulation_NumberTitle": {
+                "name": "Entity_Regulation_NumberTitle",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Entity_Regulation_Programme": {
+                "name": "Entity_Regulation_Programme",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Entity_Regulation_PublicationUrl": {
+                "name": "Entity_Regulation_PublicationUrl",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_LastName": {
+                "name": "NameAlias_LastName",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_FirstName": {
+                "name": "NameAlias_FirstName",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_MiddleName": {
+                "name": "NameAlias_MiddleName",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_WholeName": {
+                "name": "NameAlias_WholeName",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_NameLanguage": {
+                "name": "NameAlias_NameLanguage",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "NameAlias_Gender": {
+                "name": "NameAlias_Gender",
+                "type": "VARCHAR(1)",
+                "null": false
+            },
+            "NameAlias_Title": {
+                "name": "NameAlias_Title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_Function": {
+                "name": "NameAlias_Function",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "NameAlias_LogicalId": {
+                "name": "NameAlias_LogicalId",
+                "type": "INT",
+                "null": false
+            },
+            "NameAlias_RegulationLanguage": {
+                "name": "NameAlias_RegulationLanguage",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "NameAlias_Remark": {
+                "name": "NameAlias_Remark",
+                "type": "TEXT",
+                "null": false
+            },
+            "NameAlias_Regulation_Type": {
+                "name": "NameAlias_Regulation_Type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "NameAlias_Regulation_OrganisationType": {
+                "name": "NameAlias_Regulation_OrganisationType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "NameAlias_Regulation_PublicationDate": {
+                "name": "NameAlias_Regulation_PublicationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "NameAlias_Regulation_EntryIntoForceDate": {
+                "name": "NameAlias_Regulation_EntryIntoForceDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "NameAlias_Regulation_NumberTitle": {
+                "name": "NameAlias_Regulation_NumberTitle",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "NameAlias_Regulation_Programme": {
+                "name": "NameAlias_Regulation_Programme",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "NameAlias_Regulation_PublicationUrl": {
+                "name": "NameAlias_Regulation_PublicationUrl",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Address_City": {
+                "name": "Address_City",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Address_Street": {
+                "name": "Address_Street",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Address_PoBox": {
+                "name": "Address_PoBox",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Address_ZipCode": {
+                "name": "Address_ZipCode",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Address_Region": {
+                "name": "Address_Region",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Address_Place": {
+                "name": "Address_Place",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Address_AsAtListingTime": {
+                "name": "Address_AsAtListingTime",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "Address_ContactInfo": {
+                "name": "Address_ContactInfo",
+                "type": "TEXT",
+                "null": false
+            },
+            "Address_CountryIso2Code": {
+                "name": "Address_CountryIso2Code",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Address_CountryDescription": {
+                "name": "Address_CountryDescription",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Address_LogicalId": {
+                "name": "Address_LogicalId",
+                "type": "INT",
+                "null": false
+            },
+            "Address_RegulationLanguage": {
+                "name": "Address_RegulationLanguage",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Address_Remark": {
+                "name": "Address_Remark",
+                "type": "TEXT",
+                "null": false
+            },
+            "Address_Regulation_Type": {
+                "name": "Address_Regulation_Type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Address_Regulation_OrganisationType": {
+                "name": "Address_Regulation_OrganisationType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Address_Regulation_PublicationDate": {
+                "name": "Address_Regulation_PublicationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Address_Regulation_EntryIntoForceDate": {
+                "name": "Address_Regulation_EntryIntoForceDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Address_Regulation_NumberTitle": {
+                "name": "Address_Regulation_NumberTitle",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Address_Regulation_Programme": {
+                "name": "Address_Regulation_Programme",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Address_Regulation_PublicationUrl": {
+                "name": "Address_Regulation_PublicationUrl",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "BirthDate_BirthDate": {
+                "name": "BirthDate_BirthDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "BirthDate_Day": {
+                "name": "BirthDate_Day",
+                "type": "INT",
+                "null": false
+            },
+            "BirthDate_Month": {
+                "name": "BirthDate_Month",
+                "type": "INT",
+                "null": false
+            },
+            "BirthDate_Year": {
+                "name": "BirthDate_Year",
+                "type": "INT",
+                "null": false
+            },
+            "BirthDate_YearRangeFrom": {
+                "name": "BirthDate_YearRangeFrom",
+                "type": "INT",
+                "null": false
+            },
+            "BirthDate_YearRangeTo": {
+                "name": "BirthDate_YearRangeTo",
+                "type": "INT",
+                "null": false
+            },
+            "BirthDate_Circa": {
+                "name": "BirthDate_Circa",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "BirthDate_CalendarType": {
+                "name": "BirthDate_CalendarType",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "BirthDate_ZipCode": {
+                "name": "BirthDate_ZipCode",
+                "type": "VARCHAR(32)",
+                "null": false
+            },
+            "BirthDate_Region": {
+                "name": "BirthDate_Region",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "BirthDate_Place": {
+                "name": "BirthDate_Place",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "BirthDate_City": {
+                "name": "BirthDate_City",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "BirthDate_CountryIso2Code": {
+                "name": "BirthDate_CountryIso2Code",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "BirthDate_CountryDescription": {
+                "name": "BirthDate_CountryDescription",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "BirthDate_LogicalId": {
+                "name": "BirthDate_LogicalId",
+                "type": "INT",
+                "null": false
+            },
+            "BirthDate_RegulationLanguage": {
+                "name": "BirthDate_RegulationLanguage",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "BirthDate_Remark": {
+                "name": "BirthDate_Remark",
+                "type": "TEXT",
+                "null": false
+            },
+            "BirthDate_Regulation_Type": {
+                "name": "BirthDate_Regulation_Type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "BirthDate_Regulation_OrganisationType": {
+                "name": "BirthDate_Regulation_OrganisationType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "BirthDate_Regulation_PublicationDate": {
+                "name": "BirthDate_Regulation_PublicationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "BirthDate_Regulation_EntryIntoForceDate": {
+                "name": "BirthDate_Regulation_EntryIntoForceDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "BirthDate_Regulation_NumberTitle": {
+                "name": "BirthDate_Regulation_NumberTitle",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "BirthDate_Regulation_Programme": {
+                "name": "BirthDate_Regulation_Programme",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "BirthDate_Regulation_PublicationUrl": {
+                "name": "BirthDate_Regulation_PublicationUrl",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Identification_Number": {
+                "name": "Identification_Number",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Identification_Diplomatic": {
+                "name": "Identification_Diplomatic",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "Identification_KnownExpired": {
+                "name": "Identification_KnownExpired",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "Identification_KnownFalse": {
+                "name": "Identification_KnownFalse",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "Identification_ReportedLost": {
+                "name": "Identification_ReportedLost",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "Identification_RevokedByIssuer": {
+                "name": "Identification_RevokedByIssuer",
+                "type": "VARCHAR(3)",
+                "null": false
+            },
+            "Identification_IssuedBy": {
+                "name": "Identification_IssuedBy",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Identification_IssuedDate": {
+                "name": "Identification_IssuedDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Identification_ValidFrom": {
+                "name": "Identification_ValidFrom",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Identification_ValidTo": {
+                "name": "Identification_ValidTo",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Identification_LatinNumber": {
+                "name": "Identification_LatinNumber",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Identification_NameOnDocument": {
+                "name": "Identification_NameOnDocument",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Identification_TypeCode": {
+                "name": "Identification_TypeCode",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Identification_TypeDescription": {
+                "name": "Identification_TypeDescription",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Identification_Region": {
+                "name": "Identification_Region",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Identification_CountryIso2Code": {
+                "name": "Identification_CountryIso2Code",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Identification_CountryDescription": {
+                "name": "Identification_CountryDescription",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Identification_LogicalId": {
+                "name": "Identification_LogicalId",
+                "type": "INT",
+                "null": false
+            },
+            "Identification_RegulationLanguage": {
+                "name": "Identification_RegulationLanguage",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Identification_Remark": {
+                "name": "Identification_Remark",
+                "type": "TEXT",
+                "null": false
+            },
+            "Identification_Regulation_Type": {
+                "name": "Identification_Regulation_Type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Identification_Regulation_OrganisationType": {
+                "name": "Identification_Regulation_OrganisationType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Identification_Regulation_PublicationDate": {
+                "name": "Identification_Regulation_PublicationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Identification_Regulation_EntryIntoForceDate": {
+                "name": "Identification_Regulation_EntryIntoForceDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Identification_Regulation_NumberTitle": {
+                "name": "Identification_Regulation_NumberTitle",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Identification_Regulation_Programme": {
+                "name": "Identification_Regulation_Programme",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Identification_Regulation_PublicationUrl": {
+                "name": "Identification_Regulation_PublicationUrl",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Citizenship_Region": {
+                "name": "Citizenship_Region",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Citizenship_CountryIso2Code": {
+                "name": "Citizenship_CountryIso2Code",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Citizenship_CountryDescription": {
+                "name": "Citizenship_CountryDescription",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Citizenship_LogicalId": {
+                "name": "Citizenship_LogicalId",
+                "type": "INT",
+                "null": false
+            },
+            "Citizenship_RegulationLanguage": {
+                "name": "Citizenship_RegulationLanguage",
+                "type": "VARCHAR(2)",
+                "null": false
+            },
+            "Citizenship_Remark": {
+                "name": "Citizenship_Remark",
+                "type": "TEXT",
+                "null": false
+            },
+            "Citizenship_Regulation_Type": {
+                "name": "Citizenship_Regulation_Type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Citizenship_Regulation_OrganisationType": {
+                "name": "Citizenship_Regulation_OrganisationType",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Citizenship_Regulation_PublicationDate": {
+                "name": "Citizenship_Regulation_PublicationDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Citizenship_Regulation_EntryIntoForceDate": {
+                "name": "Citizenship_Regulation_EntryIntoForceDate",
+                "type": "DATETIME",
+                "null": false
+            },
+            "Citizenship_Regulation_NumberTitle": {
+                "name": "Citizenship_Regulation_NumberTitle",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Citizenship_Regulation_Programme": {
+                "name": "Citizenship_Regulation_Programme",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "Citizenship_Regulation_PublicationUrl": {
+                "name": "Citizenship_Regulation_PublicationUrl",
+                "type": "VARCHAR(255)",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_sdn": {
+        "name": "sanction_us_sdn",
+        "fields": {
+            "sanction_us_sdn_id": {
+                "name": "sanction_us_sdn_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false
+            },
+            "SDN_name": {
+                "name": "SDN_name",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "SDN_Type": {
+                "name": "SDN_Type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Program": {
+                "name": "Program",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Title": {
+                "name": "Title",
+                "type": "TEXT",
+                "null": false
+            },
+            "Call_Sign": {
+                "name": "Call_Sign",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Vess_type": {
+                "name": "Vess_type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Tonnage": {
+                "name": "Tonnage",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "GRT": {
+                "name": "GRT",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Vess_lag": {
+                "name": "Vess_lag",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Vess_owner": {
+                "name": "Vess_owner",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Remarks": {
+                "name": "Remarks",
+                "type": "TEXT",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_sdn_alt": {
+        "name": "sanction_us_sdn_alt",
+        "fields": {
+            "sanction_us_sdn_alt_id": {
+                "name": "sanction_us_sdn_alt_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "sanction_us_sdn",
+                "foreignKey": "Ent_num"
+            },
+            "alt_num": {
+                "name": "alt_num",
+                "type": "INT",
+                "null": false
+            },
+            "alt_type": {
+                "name": "alt_type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "alt_name": {
+                "name": "alt_name",
+                "type": "TEXT",
+                "null": false
+            },
+            "alt_remarks": {
+                "name": "alt_remarks",
+                "type": "VARCHAR(16)",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_sdn_add": {
+        "name": "sanction_us_sdn_add",
+        "fields": {
+            "sanction_us_sdn_add_id": {
+                "name": "sanction_us_sdn_add_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "sanction_us_sdn",
+                "foreignKey": "Ent_num"
+            },
+            "Add_num": {
+                "name": "Add_num",
+                "type": "INT",
+                "null": false
+            },
+            "Address": {
+                "name": "Address",
+                "type": "TEXT",
+                "null": false
+            },
+            "City_Province_PostalCode": {
+                "name": "City_Province_PostalCode",
+                "type": "TEXT",
+                "null": false
+            },
+            "Country": {
+                "name": "Country",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Add_remarks": {
+                "name": "Add_remarks",
+                "type": "VARCHAR(16)",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_sdn_comments": {
+        "name": "sanction_us_sdn_comments",
+        "fields": {
+            "sanction_us_sdn_comments_id": {
+                "name": "sanction_us_sdn_comments_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "sanction_us_sdn",
+                "foreignKey": "Ent_num"
+            },
+            "Remarks_extended": {
+                "name": "Remarks_extended",
+                "type": "TEXT",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_cons": {
+        "name": "sanction_us_cons",
+        "fields": {
+            "sanction_us_cons_id": {
+                "name": "sanction_us_cons_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false
+            },
+            "SDN_name": {
+                "name": "SDN_name",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "SDN_Type": {
+                "name": "SDN_Type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Program": {
+                "name": "Program",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Title": {
+                "name": "Title",
+                "type": "TEXT",
+                "null": false
+            },
+            "Call_Sign": {
+                "name": "Call_Sign",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Vess_type": {
+                "name": "Vess_type",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Tonnage": {
+                "name": "Tonnage",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "GRT": {
+                "name": "GRT",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Vess_lag": {
+                "name": "Vess_lag",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Vess_owner": {
+                "name": "Vess_owner",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "Remarks": {
+                "name": "Remarks",
+                "type": "TEXT",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_cons_alt": {
+        "name": "sanction_us_cons_alt",
+        "fields": {
+            "sanction_us_cons_alt_id": {
+                "name": "sanction_us_cons_alt_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "sanction_us_cons",
+                "foreignKey": "Ent_num"
+            },
+            "alt_num": {
+                "name": "alt_num",
+                "type": "INT",
+                "null": false
+            },
+            "alt_type": {
+                "name": "alt_type",
+                "type": "VARCHAR(16)",
+                "null": false
+            },
+            "alt_name": {
+                "name": "alt_name",
+                "type": "TEXT",
+                "null": false
+            },
+            "alt_remarks": {
+                "name": "alt_remarks",
+                "type": "VARCHAR(16)",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_cons_add": {
+        "name": "sanction_us_cons_add",
+        "fields": {
+            "sanction_us_cons_add_id": {
+                "name": "sanction_us_cons_add_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "sanction_us_cons",
+                "foreignKey": "Ent_num"
+            },
+            "Add_num": {
+                "name": "Add_num",
+                "type": "INT",
+                "null": false
+            },
+            "Address": {
+                "name": "Address",
+                "type": "TEXT",
+                "null": false
+            },
+            "City_Province_PostalCode": {
+                "name": "City_Province_PostalCode",
+                "type": "TEXT",
+                "null": false
+            },
+            "Country": {
+                "name": "Country",
+                "type": "VARCHAR(64)",
+                "null": false
+            },
+            "Add_remarks": {
+                "name": "Add_remarks",
+                "type": "VARCHAR(16)",
+                "null": false
+            }
+        }
+    },
+    "sanction_us_cons_comments": {
+        "name": "sanction_us_cons_comments",
+        "fields": {
+            "sanction_us_cons_comments_id": {
+                "name": "sanction_us_cons_comments_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "Ent_num": {
+                "name": "Ent_num",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "sanction_us_cons",
+                "foreignKey": "Ent_num"
+            },
+            "Remarks_extended": {
+                "name": "Remarks_extended",
+                "type": "TEXT",
+                "null": false
+            }
+        }
+    }
+}

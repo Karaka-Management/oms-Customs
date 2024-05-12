@@ -1,0 +1,46 @@
+{
+    "name": {
+        "id": 1008900000,
+        "internal": "Customs",
+        "external": "Customs"
+    },
+    "category": "General",
+    "version": "1.0.0",
+    "requirements": {
+        "phpOMS": "1.0.0",
+        "phpOMS-db": "1.0.0"
+    },
+    "creator": {
+        "name": "Jingga",
+        "website": "jingga.app"
+    },
+    "description": "The customs module.",
+    "directory": "Customs",
+    "dependencies": {
+        "Admin": "1.0.0",
+        "Home": "1.0.0"
+    },
+    "providing": {
+        "Navigation": "*"
+    },
+    "load": [
+        {
+            "pid": [
+                "/customs"
+            ],
+            "type": 4,
+            "for": "Content",
+            "from": "Customs",
+            "file": "Customs"
+        },
+        {
+            "pid": [
+                "/"
+            ],
+            "type": 5,
+            "from": "Customs",
+            "for": "Navigation",
+            "file": "Navigation"
+        }
+    ]
+}

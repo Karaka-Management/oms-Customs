@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1008901001,
+        "pid": "/",
+        "type": 2,
+        "subtype": 0,
+        "name": "Customs",
+        "uri": null,
+        "target": "self",
+        "icon": "flag",
+        "order": 41,
+        "from": "Customs",
+        "permission": { "permission": 2, "category": null, "element": null },
+        "parent": 0,
+        "children": [
+            {
+                "id": 1008902001,
+                "pid": "/",
+                "type": 2,
+                "subtype": 1,
+                "name": "Sanctions",
+                "uri": "{/base}/customs/sanction/dashboard",
+                "target": "self",
+                "icon": null,
+                "order": 5,
+                "from": "Customs",
+                "permission": { "permission": 2, "category": null, "element": null },
+                "parent": 1008901001,
+                "children": [
+                    {
+                        "id": 1008902002,
+                        "pid": "/customs/sanction",
+                        "type": 3,
+                        "subtype": 1,
+                        "name": "Dashboard",
+                        "uri": "{/base}/customs/sanction/dashboard",
+                        "target": "self",
+                        "icon": null,
+                        "order": 5,
+                        "from": "Customs",
+                        "permission": { "permission": 2, "category": null, "element": null },
+                        "parent": 1008902001,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 1008903001,
+                "pid": "/",
+                "type": 2,
+                "subtype": 1,
+                "name": "HSCode",
+                "uri": "{/base}/customs/hscode/dashboard",
+                "target": "self",
+                "icon": null,
+                "order": 5,
+                "from": "Customs",
+                "permission": { "permission": 2, "category": null, "element": null },
+                "parent": 1008901001,
+                "children": [
+                    {
+                        "id": 1008903002,
+                        "pid": "/customs/hscode",
+                        "type": 3,
+                        "subtype": 1,
+                        "name": "Dashboard",
+                        "uri": "{/base}/customs/hscode/dashboard",
+                        "target": "self",
+                        "icon": null,
+                        "order": 5,
+                        "from": "Customs",
+                        "permission": { "permission": 2, "category": null, "element": null },
+                        "parent": 1008903001,
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+]
