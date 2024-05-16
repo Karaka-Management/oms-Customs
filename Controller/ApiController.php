@@ -14,10 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\Customs\Controller;
 
-use phpOMS\Message\Http\RequestStatusCode;
-use phpOMS\Message\RequestAbstract;
-use phpOMS\Message\ResponseAbstract;
-
 /**
  * Api controller for the dashboard module.
  *

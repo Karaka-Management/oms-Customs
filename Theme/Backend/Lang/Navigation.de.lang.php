@@ -13,7 +13,7 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Customs' => 'Zoll',
+    'Customs'   => 'Zoll',
     'Sanctions' => 'Sanktionen',
-    'HSCode' => 'Zolltarifnummer',
+    'HSCode'    => 'Zolltarifnummer',
 ]];

@@ -1,4 +1,16 @@
 <?php
+/**
+ * Jingga
+ *
+ * PHP Version 8.2
+ *
+ * @package   Modules\Customs\Data
+ * @copyright Dennis Eichhorn
+ * @license   OMS License 2.0
+ * @version   1.0.0
+ * @link      https://jingga.app
+ */
+declare(strict_types=1);
 
 // Sources:
 
@@ -29,13 +41,21 @@ if (\is_file($file)) {
 
 $con = new SQLiteConnection(
     [
-        'db' => 'sqlite',
+        'db'       => 'sqlite',
         'database' => $file,
     ]
 );
 $con->connect();
 
-$schema = \json_decode(\file_get_contents(__DIR__ . '/schema.json'), true);
+$schemaContent = \file_get_contents(__DIR__ . '/schema.json');
+if ($schemaContent === false) {
+    return;
+}
+
+$schema = \json_decode($schemaContent, true);
+if (!\is_array($schema)) {
+    return;
+}
 
 foreach ($schema as $table) {
     Builder::createFromSchema($table, $con)->execute();

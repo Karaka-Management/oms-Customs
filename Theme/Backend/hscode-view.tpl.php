@@ -1,7 +1,7 @@
 <?php
 $footnotes = $this->data['footnotes'] ?? [];
-$goods = $this->data['goods'] ?? [];
-$baseDate = strtotime("1899-12-30");
+$goods     = $this->data['goods'] ?? [];
+$baseDate  = \strtotime("1899-12-30");
 ?>
 <div class="row">
     <div class="col-xs-12 col-md-6">
@@ -9,8 +9,8 @@ $baseDate = strtotime("1899-12-30");
             <div class="portlet-body">
             <?php foreach ($goods as $good) : ?>
                 <div class="form-group">
-                    <label><?= $good['Goods_code'] ?></label>
-                    <p><?= $good['Description'] ?></p>
+                    <label><?= $good['Goods_code']; ?></label>
+                    <p><?= $good['Description']; ?></p>
                 </div>
             <?php endforeach; ?>
             </div>
@@ -19,7 +19,7 @@ $baseDate = strtotime("1899-12-30");
 </div>
 
 <?php
-$length = \count($footnotes);
+$length     = \count($footnotes);
 $lastOrigin = '';
 foreach ($footnotes as $idx => $value) :
     if ($lastOrigin === $value['Origin_code']) {
@@ -46,8 +46,8 @@ foreach ($footnotes as $idx => $value) :
                 $start = '';
                 if (!empty($footnotes[$i]['Start_date'])) {
                     $seconds = $footnotes[$i]['Start_date'] * 86400;
-                    $date = new DateTime('@' . ($baseDate + $seconds));
-                    $start = $date->format('Y-m-d');
+                    $date    = new DateTime('@' . ($baseDate + $seconds));
+                    $start   = $date->format('Y-m-d');
                 }
             ?>
             <div class="portlet-body">

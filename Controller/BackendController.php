@@ -78,18 +78,18 @@ final class BackendController extends Controller
         }
 
         $con = new \phpOMS\DataStorage\Database\Connection\SQLiteConnection([
-            'db' => 'sqlite',
-            'database' => __DIR__ . '/../Data/customs.sqlite'
+            'db'       => 'sqlite',
+            'database' => __DIR__ . '/../Data/customs.sqlite',
         ]);
 
         $con->connect();
 
         $query = new Builder($con);
 
-        $nameString = \str_replace(['.', ';', ',', '-'], ' ', $request->getDataString('name') ?? '');
-        $names = \explode(' ', $nameString);
+        $nameString      = \str_replace(['.', ';', ',', '-'], ' ', $request->getDataString('name') ?? '');
+        $names           = \explode(' ', $nameString);
         $fileSearchArray = $names;
-        $name = '';
+        $name            = '';
 
         // US SDN and CONS
         foreach ($names as $idx => $n) {
@@ -140,7 +140,7 @@ final class BackendController extends Controller
         LIMIT 100;
         SQL;
 
-        $view->data['sanctions'] = \array_merge($view->data['sanctions'], $query->raw($sql)->execute()->fetchAll());
+        $view->data['sanctions'] = \array_merge($view->data['sanctions'], $query->raw($sql)->execute()?->fetchAll() ?? []);
 
         $sql = <<<SQL
         SELECT sanction_us_cons.Ent_num,
@@ -158,7 +158,7 @@ final class BackendController extends Controller
         LIMIT 100;
         SQL;
 
-        $view->data['sanctions'] = \array_merge($view->data['sanctions'], $query->raw($sql)->execute()->fetchAll());
+        $view->data['sanctions'] = \array_merge($view->data['sanctions'], $query->raw($sql)->execute()?->fetchAll() ?? []);
 
         // EU Consolidated
         $name = '';
@@ -246,7 +246,7 @@ final class BackendController extends Controller
         LIMIT 500;
         SQL;
 
-        $view->data['sanctions'] = \array_merge($view->data['sanctions'], $query->raw($sql)->execute()->fetchAll());
+        $view->data['sanctions'] = \array_merge($view->data['sanctions'], $query->raw($sql)->execute()?->fetchAll() ?? []);
 
         $con->close();
 
@@ -254,7 +254,7 @@ final class BackendController extends Controller
         $positions = SearchUtils::findInFile(__DIR__ . '/../Data/Sanctions/EU/CELEX 32002R0881 EN TXT.html', $fileSearchArray);
 
         $lex_881_2002 = [];
-        $hashResults = [];
+        $hashResults  = [];
         foreach ($positions as $position) {
             if ($position['distance'] > 500) {
                 continue;
@@ -272,11 +272,11 @@ final class BackendController extends Controller
                 continue;
             }
 
-            $hashResults[] = $hash;
+            $hashResults[]  = $hash;
             $lex_881_2002[] = [
                 'sanction_db' => 'EU_881/2002',
-                'Ent_num' => 'EU_881/2002',
-                'parsed' => $sanction,
+                'Ent_num'     => 'EU_881/2002',
+                'parsed'      => $sanction,
             ];
         }
 
@@ -286,7 +286,7 @@ final class BackendController extends Controller
         $positions = SearchUtils::findInFile(__DIR__ . '/../Data/Sanctions/EU/CELEX 32011R0753 EN TXT.html', $fileSearchArray);
 
         $lex_753_2011 = [];
-        $hashResults = [];
+        $hashResults  = [];
         foreach ($positions as $position) {
             if ($position['distance'] > 500) {
                 continue;
@@ -304,11 +304,11 @@ final class BackendController extends Controller
                 continue;
             }
 
-            $hashResults[] = $hash;
+            $hashResults[]  = $hash;
             $lex_753_2011[] = [
                 'sanction_db' => 'EU_753/2011',
-                'Ent_num' => 'EU_753/2011',
-                'parsed' => $sanction,
+                'Ent_num'     => 'EU_753/2011',
+                'parsed'      => $sanction,
             ];
         }
 
@@ -318,7 +318,7 @@ final class BackendController extends Controller
         $positions = SearchUtils::findInFile(__DIR__ . '/../Data/Sanctions/EU/CELEX 32011R0753 EN TXT.html', $fileSearchArray);
 
         $lex_2024_385 = [];
-        $hashResults = [];
+        $hashResults  = [];
         foreach ($positions as $position) {
             if ($position['distance'] > 500) {
                 continue;
@@ -336,11 +336,11 @@ final class BackendController extends Controller
                 continue;
             }
 
-            $hashResults[] = $hash;
+            $hashResults[]  = $hash;
             $lex_2024_385[] = [
                 'sanction_db' => 'EU_2024/385',
-                'Ent_num' => 'EU_2024/385',
-                'parsed' => $sanction,
+                'Ent_num'     => 'EU_2024/385',
+                'parsed'      => $sanction,
             ];
         }
 
@@ -349,20 +349,35 @@ final class BackendController extends Controller
         return $view;
     }
 
+    /**
+     * Create HS code view
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @api
+     *
+     * @since 1.0.0
+     */
     public function viewHSCodeView(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
         $view->setTemplate('/Modules/Customs/Theme/Backend/hscode-view');
 
+        $original = $request->getDataString('id') ?? '';
+
         if (!$request->hasData('id')
-            || \preg_match('/^[0-9 ]+$/', $original = $request->getDataString('id')) !== 1
+            || \preg_match('/^[0-9 ]+$/', $original) !== 1
         ) {
             return $view;
         }
 
         $con = new \phpOMS\DataStorage\Database\Connection\SQLiteConnection([
-            'db' => 'sqlite',
-            'database' => __DIR__ . '/../Data/customs.sqlite'
+            'db'       => 'sqlite',
+            'database' => __DIR__ . '/../Data/customs.sqlite',
         ]);
 
         $con->connect();
@@ -395,7 +410,7 @@ final class BackendController extends Controller
 
         $query = new Builder($con);
 
-        $view->data['goods'] = $query->raw($sql)->execute()->fetchAll();
+        $view->data['goods'] = $query->raw($sql)->execute()?->fetchAll() ?? [];
 
         if (empty($view->data['goods'])) {
             return $view;
@@ -425,7 +440,7 @@ final class BackendController extends Controller
 
         $query = new Builder($con);
 
-        $view->data['footnotes'] = $query->raw($sql)->execute()->fetchAll();
+        $view->data['footnotes'] = $query->raw($sql)->execute()?->fetchAll() ?? [];
 
         return $view;
     }
@@ -453,8 +468,8 @@ final class BackendController extends Controller
         }
 
         $con = new \phpOMS\DataStorage\Database\Connection\SQLiteConnection([
-            'db' => 'sqlite',
-            'database' => __DIR__ . '/../Data/customs.sqlite'
+            'db'       => 'sqlite',
+            'database' => __DIR__ . '/../Data/customs.sqlite',
         ]);
 
         $con->connect();
@@ -474,7 +489,7 @@ final class BackendController extends Controller
         $query->bind(['value' => '%' . $request->getDataString('hscode') . '%'], ':description');
         $query->bind(['value' => '%' . $request->getDataString('hscode') . '%'], ':code');
 
-        $temp = $query->raw($sql)->execute()->fetchAll();
+        $temp = $query->raw($sql)->execute()?->fetchAll() ?? [];
 
         if (($exactCount = \count($temp)) === 0) {
             return $view;
@@ -484,7 +499,7 @@ final class BackendController extends Controller
         // For this reason we have to also load all the sub-categories
         // Create code range by finding the last none-0 value and increasing that value by 1
         // While that value is a 9 the value is set to 0 and the left number is increased by 1
-        $codeRanges = [];
+        $codeRanges   = [];
         $exactMatches = [];
 
         foreach ($temp as $code) {
@@ -495,7 +510,7 @@ final class BackendController extends Controller
             }
 
             $length = \strlen($code['Goods_code']);
-            $max = \max(
+            $max    = \max(
                 \strrpos($code['Goods_code'], '1', -3),
                 \strrpos($code['Goods_code'], '2', -3),
                 \strrpos($code['Goods_code'], '3', -3),
@@ -506,7 +521,7 @@ final class BackendController extends Controller
                 \strrpos($code['Goods_code'], '8', -3),
                 \strrpos($code['Goods_code'], '9', -3),
             );
-            $maxCode = $code['Goods_code'];
+            $maxCode              = $code['Goods_code'];
             $maxCode[$length - 1] = '0';
             $maxCode[$length - 2] = '0';
 
@@ -516,13 +531,13 @@ final class BackendController extends Controller
             }
 
             $maxCode[$max] = ((int) $code['Goods_code'][$max]) + 1;
-            $codeRanges[] = '(taric_good.Goods_code >= "' . $code['Goods_code'] . '"'
+            $codeRanges[]  = '(taric_good.Goods_code >= "' . $code['Goods_code'] . '"'
                 . ' AND taric_good.Goods_code < "' . $maxCode . '")';
         }
 
         $codeRanges = empty($codeRanges)
             ? ''
-            : ' OR (' . \implode (' OR ', $codeRanges) . ')';
+            : ' OR (' . \implode(' OR ', $codeRanges) . ')';
 
         $exactMatches = '"' . \implode('","', $exactMatches) . '"';
 
@@ -535,8 +550,8 @@ final class BackendController extends Controller
         LIMIT 1000;
         SQL;
 
-        $query = new Builder($con);
-        $view->data['codes'] =  $query->raw($sql)->execute()->fetchAll();
+        $query               = new Builder($con);
+        $view->data['codes'] = $query->raw($sql)->execute()?->fetchAll() ?? [];
 
         $con->close();
 

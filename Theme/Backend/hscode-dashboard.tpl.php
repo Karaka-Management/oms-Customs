@@ -39,9 +39,9 @@ $codes = $this->data['codes'] ?? [];
             <tbody>
             <?php $count = 0;
             foreach ($codes as $key => $value) : ++$count;
-                $id = \substr($value['Goods_code'], 0, (int) \stripos($value['Goods_code'], ' '));
-                $url = UriFactory::build('{/base}/customs/hscode/view?id=' . $id);
-                $description = $this->printHtml($value['Description']);
+                $id           = \substr($value['Goods_code'], 0, (int) \stripos($value['Goods_code'], ' '));
+                $url          = UriFactory::build('{/base}/customs/hscode/view?id=' . $id);
+                $description  = $this->printHtml($value['Description']);
                 $foundKeyword = \stripos($description, $this->request->getDataString('hscode'));
 
                 if ($foundKeyword !== false) {
@@ -50,13 +50,13 @@ $codes = $this->data['codes'] ?? [];
                     // Whitespace handling is causing issues since the whitespace is only rendered if followed by another character
                     // If whitespace found -> exclude from string -> add &nbsp; which gets always rendered unlike the whitespace
                     $startsWithS = ($description[$foundKeyword - 1] ?? '') === ' ';
-                    $endsWithS = ($description[$foundKeyword + $len] ?? '') === ' ';
+                    $endsWithS   = ($description[$foundKeyword + $len] ?? '') === ' ';
 
                     $description = \substr($description, 0, $foundKeyword - ((int) $startsWithS))
                         . (($description[$foundKeyword - 1] ?? '') === ' ' ? '&nbsp;' : '')
                         . '<mark>' . \substr($description, $foundKeyword, $len) . '</mark>'
                         . (($description[$foundKeyword + $len] ?? '') === ' ' ? '&nbsp;' : '')
-                        . \substr($description, $foundKeyword + $len  + ((int) $endsWithS));
+                        . \substr($description, $foundKeyword + $len + ((int) $endsWithS));
                 }
             ?>
                 <tr tabindex="0" data-href="<?= $url; ?>">

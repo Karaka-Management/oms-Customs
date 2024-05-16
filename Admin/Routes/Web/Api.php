@@ -12,10 +12,5 @@
  */
 declare(strict_types=1);
 
-use Modules\Dashboard\Controller\ApiController;
-use Modules\Dashboard\Models\PermissionCategory;
-use phpOMS\Account\PermissionType;
-use phpOMS\Router\RouteVerb;
-
 return [
 ];
