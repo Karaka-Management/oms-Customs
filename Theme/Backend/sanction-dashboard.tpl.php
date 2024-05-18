@@ -12,9 +12,11 @@
  */
 declare(strict_types=1);
 
+use phpOMS\Localization\ISO3166NameEnum;
 use phpOMS\Uri\UriFactory;
 
 $sanctions = $this->data['sanctions'] ?? [];
+$countries = ISO3166NameEnum::getConstants();
 ?>
 <div class="row">
     <div class="col-xs-12 col-md-6">
@@ -39,7 +41,12 @@ $sanctions = $this->data['sanctions'] ?? [];
 
                 <div class="form-group">
                     <label for="iCountry"><?= $this->getHtml('Country'); ?></label>
-                    <input type="text" id="iCountry" name="country" value="<?= $this->printHtml($this->request->getDataString('country')); ?>">
+                    <select id="iCountry" name="country">
+                        <option value="">
+                        <?php foreach ($countries as $value) : ?>
+                            <option value="<?= $this->printHtml($value); ?>"<?= $this->printHtml($value) === $this->printHtml($this->request->getDataString('country')) ? ' selected' : ''; ?>><?= $this->printHtml($value); ?>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
             <div class="portlet-foot">
